@@ -1,0 +1,143 @@
+Feature: Search Header
+
+Scenario: As a user, I should be able to see a search bar containing the company logo, search text box, allowance balance, explore templates button, and user DP with menu items
+
+File: features/V3/searchHeader.feature:7
+
+Steps:
+
+- Given user logs in using username and passcode for V3
+- Page loaded successfully: https://qa-app.joinassembly.com/workspaces
+- Given user in new UI experience
+- Then the user should be able to see the company logo and search the text box
+- Then the user should be able to see allowance balance, explore the templates button, and user DP with menu items
+- Scenario: As a user, I should be able to see my Allowances balance and Earned balance if exists
+- File: features/V3/searchHeader.feature:13
+
+Steps:
+
+- Given user logs in using username and passcode for V3
+- Page loaded successfully: https://qa-app.joinassembly.com/workspaces
+- Given user in new UI experience
+- When user clicks on the allowances
+- Then user should be able to see the allowances balance and click on the "Browse rewards" button
+- Then user should be redirected to the rewards page
+- Feature: Admin -> Billing -> Account plan
+- File: features/billing/upgradeDowngradePlan.feature:1
+
+Scenario Outline: As an admin user, I should be able to upgrade to any plan
+
+File: features/billing/upgradeDowngradePlan.feature:13
+
+Steps:
+
+- Given user logs in for free account using username and passcode
+- Given user is in free plan
+- New page title: Assembly - Empower your team
+- Breadcrumb text is: > Account Plan
+- When user upgrades to "Upgrade to Standard" plan available
+- Toast message is: Downgrading to Starter plan
+- Then Snapshot "Upgrade to Standard"
+
+Scenario Outline: As an admin user, I should be able to upgrade to any plan
+
+File: features/billing/upgradeDowngradePlan.feature:13
+
+Steps:
+
+- Given user logs in for free account using username and passcode
+- Given user is in free plan
+- New page title: Assembly - Empower your team
+- Breadcrumb text is: > Account Plan
+- When user upgrades to "Upgrade to Premium" plan available
+- Toast message is: Downgrading to Starter plan
+- Then Snapshot "Upgrade to Premium"
+
+Feature: Admin -> Billing -> Payment method
+
+File: features/billing/validateChangingCardDetails.feature:1
+
+Scenario Outline: As an admin user, I should be able to add and update card details
+
+File: features/billing/validateChangingCardDetails.feature:7
+
+Steps:
+
+- Given user logs in using username and passcode
+- Given user has added old card details
+- New page title: Assembly - Empower your team
+- When user updates card details using "user1" "4242424242424242" "12/2025" "123" "APP100"
+- Toast message is: Applying Promo Code...
+- Toast message is: Applying Promo Code...
+- Then Snapshot "user1-4242424242424242"
+
+
+Feature: Admin -> Bots -> Anniversary
+
+File: features/bot/anniversaryBot.feature:1
+
+Scenario: As a user, I should be able to add Anniversary date
+
+File: features/bot/anniversaryBot.feature:35
+
+Steps:
+
+- Given user logs in using username and passcode to standard plan account
+- Given a user opens Admin page for anniversary
+- New page title: Assembly - Empower your team
+- When the user clicks on Anniversary
+
+Errors:
+
+- Failed to find the [editSelectedGif] element after waiting for time: 30001 milliseconds
+- Error location: loginPage.waitForElementInNewPage (/home/manish/actions-runner/_work/assembly_automation/assembly_automation/src/pageobjects/loginPage.ts:463:15)
+at async CustomWorld. (/home/manish/actions-runner/_work/assembly_automation/assembly_automation/src/steps/bot/anniversaryBot.steps.ts:35:27)\
+
+Skipped Steps:
+
+- And user adds hire date using Add button in Anniversary section
+- Then user must be available in Anniversaries this month section
+
+Scenario: As a user, I should be able to add Anniversary date
+
+File: features/bot/anniversaryBot.feature:35
+
+Steps:
+
+- Given user logs in using username and passcode to standard plan account
+- Given a user opens Admin page for anniversary
+- New page title: Assembly - Empower your team
+- When the user clicks on Anniversary
+
+Errors:
+
+- Failed to find the [editSelectedGif] element after waiting for time: 30000 milliseconds
+- Error location: loginPage.waitForElementInNewPage (/home/manish/actions-runner/_work/assembly_automation/assembly_automation/src/pageobjects/loginPage.ts:463:15)
+at async CustomWorld (/home/manish/actions-runner/_work/assembly_automation/assembly_automation/src/steps/bot/anniversaryBot.steps.ts:35:27)
+
+Skipped Steps:
+
+- And user adds hire date using Add button in Anniversary section
+- Then user must be available in Anniversaries this month section
+
+Feature: Admin -> Bots -> Birthday
+
+File: features/bot/birthdayBot.feature:1
+
+Scenario: As a user, I should be able to add Birthday date
+
+File: features/bot/birthdayBot.feature:35
+
+Steps:
+
+- Given user logs in using username and passcode to standard plan account
+- Given a user opens Admin page for Birthday
+- New page title: Assembly - Empower your team
+- When the user clicks on Birthday
+- And user adds birthday date using Add button in Birthday section
+- This month name is: June
+- Today date is 14
+- Toast message is: Updating user(s)...
+- Then user must be available in Birthday this month section
+- Employees without birthdays (1)
+- Birthdays this month (2)
