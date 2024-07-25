@@ -50,7 +50,7 @@ embeddings:
 
 chunks:
   size: 300
-  overlap: 100
+  overlap: 500
   group_by_columns: [id] # by default, we don't allow chunks to cross documents
     
 input:
@@ -91,7 +91,7 @@ summarize_descriptions:
   ## parallelization: override the global parallelization settings for this task
   ## async_mode: override the global async_mode settings for this task
   prompt: "prompts/summarize_descriptions.txt"
-  max_length: 500
+  max_length: 1000
 
 claim_extraction:
   ## llm: override the global llm settings for this task
@@ -108,7 +108,7 @@ community_report:
   ## async_mode: override the global async_mode settings for this task
   prompt: "prompts/community_report.txt"
   max_length: 2000
-  max_input_length: 8000
+  max_input_length: 5000
 
 cluster_graph:
   max_cluster_size: 10
